@@ -1,2 +1,4 @@
 # AI
-Creating an AI module using python
+Creating an AI from scratch using python
+
+## 
