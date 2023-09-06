@@ -10,6 +10,8 @@ while True:
     try:
         result = wikipedia.summary(inp, sentences=3)
         print(f"According to Wikipedia:\n{result}")
+    except wikipedia.exceptions.DisambiguationError as e:
+        print(f"Ambiguous search term. Please specify your query: {', '.join(e.options)}")
     except wikipedia.exceptions.PageError:
         print("No matching page found on Wikipedia. Please refine your search.")
 
