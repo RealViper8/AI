@@ -1,4 +1,4 @@
 # AI
-Creating an AI from scratch using python
+A free to use AI/chatbot module/app
+There are some bugs
 
-## 
