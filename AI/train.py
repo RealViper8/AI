@@ -4,10 +4,10 @@ import pickle
 import numpy as np
 import tensorflow as tf
 
-if __name__ == "__main__":
+try:
     from colorprint import ColorPrint as _
     import colorprint as __
-else:
+except:
     from AI.colorprint import ColorPrint as _
     import AI.colorprint as __
 

@@ -20,7 +20,11 @@ try:
     classes = pickle.load(open('classes.pkl','rb'))
     model = load_model('chatbot_model.h5')
 except:
-    train.Training()
+    if __name__ == "__main__":
+        train.Training()
+    else:
+        AI.train.Training()
+    os.system("pause")
     intents = json.loads(open('intents.json').read())
     words = pickle.load(open('words.pkl','rb'))
     classes = pickle.load(open('classes.pkl','rb'))

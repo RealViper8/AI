@@ -10,3 +10,4 @@ title Main
   cls
   python main.py
 :@EndCatch
+pause

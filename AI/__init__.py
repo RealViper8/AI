@@ -1,43 +1,53 @@
 import os
-import pyrebase
 import threading
 import json
 import nltk
 
-if __name__ == "__main__":
+try:
+    import train
     from colorprint import ColorPrint as _
     import colorprint as __
-else:
+except ModuleNotFoundError:
+    from AI.train import Training
     from AI.colorprint import ColorPrint as _
     import AI.colorprint as __
 
-firebase = {
-  "apiKey": "AIzaSyC0d4ntBwxyOwjW7_koP5Q1d8bSxLQssL4",
-  "authDomain": "servermanager-2db49.firebaseapp.com",
-  "databaseURL": "https://servermanager-2db49-default-rtdb.firebaseio.com",
-  "projectId": "servermanager-2db49",
-  "storageBucket": "servermanager-2db49.appspot.com",
-  "messagingSenderId": "108940988457",
-  "appId": "1:108940988457:web:83375a492788db8cea4c38",
-  "measurementId": "G-JLS6RNSDVV"
-}
+if not os.path.exists("intents.json"):
+            f = open("intents.json","w")
+            f.writelines("""
+{"intents": [
+    {"tag": "greeting",
+        "patterns": ["Hi there", "How are you", "Is anyone there?","Hey","Hola", "Hello", "Good day"],
+        "responses": ["Hello", "Good to see you again", "Hi there, how can I help?"],
+        "context": [""]
+    },
+    {"tag": "goodbye",
+        "patterns": ["Bye", "See you later", "Goodbye", "Nice chatting to you, bye", "Till next time"],
+        "responses": ["See you!", "Have a nice day", "Bye! Come back again soon."],
+        "context": [""]
+    },
+    {"tag": "thanks",
+        "patterns": ["Thanks", "Thank you", "That's helpful", "Awesome, thanks", "Thanks for helping me"],
+        "responses": ["My pleasure", "You're Welcome"],
+        "context": [""]
+    },
+    {"tag": "query",
+        "patterns": ["What is Simplilearn?"],
+        "responses": ["Simplilearn is the popular online Bootcamp & online courses learning platform "],
+        "context": [""]
+    } 
+]}""")
+f.close()
 
-if not os.path.exists("save.json"):
-    f = open("save.json","w")
-    f.close()
+if not os.path.exists("chatbot_model.h5"):
+    if __name__ == "__main__":
+        train.Training()
+    else: Training()
 
 awake = False
 class Initialize:
     def __init__(self, wake : bool | None=False) -> None:
-        f = open("save.json","r")
-        try: data = json.loads(f.read())
-        except: data = None
-        f.close()
         self.wake = wake
-
-        if data != None:
-            self.learn = data
-        else: self.learn = None
 
     def Awake(self):
         while self.wake == True:
