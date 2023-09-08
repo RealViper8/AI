@@ -37,7 +37,7 @@ if not os.path.exists("intents.json"):
         "context": [""]
     } 
 ]}""")
-f.close()
+        f.close()
 
 if not os.path.exists("chatbot_model.h5"):
     if __name__ == "__main__":
