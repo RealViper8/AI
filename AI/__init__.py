@@ -32,8 +32,8 @@ if not os.path.exists("intents.json"):
         "context": [""]
     },
     {"tag": "query",
-        "patterns": ["What is Simplilearn?"],
-        "responses": ["Simplilearn is the popular online Bootcamp & online courses learning platform "],
+        "patterns": ["What is RealViper?"],
+        "responses": ["RealViper is a YT Channel"],
         "context": [""]
     } 
 ]}""")
