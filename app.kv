@@ -1,0 +1,58 @@
+ScreenManager:
+    MainScreen:
+    MenuScreen:
+<MainScreen>:
+    name: "home"
+    BoxLayout:
+        orientation: 'vertical'
+        MDTopAppBar:
+            title: 'Application'
+            anchor_title: 'center'
+            left_action_items: [["menu", lambda x: app.navigation_draw()]]
+            right_action_items: [["clock", lambda x: app.navigation_draw()]]
+            elevation: 1
+        BoxLayout:
+            TextInput:
+                id: field
+                hint_text: "Enter Something"
+                pos_hint: {'center_x': 0.5,'center_y': 0.4}
+                size_hint:1,None
+                halign: 'center'
+                height:"60dp"
+        BoxLayout:
+            size_hint: 1,1
+            ScrollView:
+                bar_color: [0, 0, 255, 1]
+                bar_width: 12
+                size_hint: 1,None
+                BoxLayout:
+                    size: self.parent.width, self.parent.height-1
+                    id: container
+                    orientation: "vertical"
+                    size_hint_y: None
+                    height: self.minimum_height
+                    canvas.before:
+                        Color: 
+                            rgba:  80, 200, 120, 1
+                    # Rectangle:
+                    # pos: self.pos
+                    # size: self.size
+                    MDLabel:
+                        id: lb
+                        text: field.text + ""
+                        #pos_hint: {'center_x': 0.5,'center_y': 0.1}
+        MDBottomAppBar:
+            MDTopAppBar:
+                icon: "play"
+                title: ''
+                anchor_title: 'center'
+                elevation: 0
+                on_action_button:
+                    app.get_search(field.text, lb)
+                type: "bottom"
+<MenuScreen>:
+    name: "menu"
+    MDScreen:
+        MDLabel:
+            text:"HI"
+            pos_hint: {'center_x': 0.5,'center_y': 0.5}

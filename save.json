@@ -1,0 +1,7 @@
+{
+    "greetings": ["Hello", "Hello how are you doing?", "How are you doing", "wasup", "Wassup", "Goodbye", "Bye", "how you doing", "Im Good", "Very good","Not so good"],
+    "greetings_responsive": ["Hello how can I help you today with !","Hello im fine you?", "Im fine and you?", "Watsup !", "Wassup !", "Bye !", "Bye", "Im fine you?","Good to hear !","Good to hear", "Sorry to hear that !"],
+    "questions" : [],
+    "questions_responsive": [],
+    "calculator" : ["+","-","/","*"]
+}
